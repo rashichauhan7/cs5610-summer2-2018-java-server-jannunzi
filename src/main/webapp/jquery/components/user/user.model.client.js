@@ -14,7 +14,7 @@ function User(username, password, firstName, lastName) {
   this.getFirstName = getFirstName;
   this.setLastName = setLastName;
   this.getLastName = getLastName;
-  
+}
   function setUsername(username) {
     this.username = username;
   }
