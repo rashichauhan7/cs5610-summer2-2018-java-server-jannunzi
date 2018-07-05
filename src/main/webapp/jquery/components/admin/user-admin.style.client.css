@@ -1,0 +1,19 @@
+.btn {
+   /* Blue background */
+    border: none; /* Remove borders */
+    color: black; /* White text */
+    padding: 8px 12px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+.btn:hover {
+    background-color: grey;
+}
+.btnblock {
+	width: 200px;
+}
+.btnblocklist {
+	width: 200px;
+	display: none;
+}
+

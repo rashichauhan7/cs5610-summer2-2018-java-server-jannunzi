@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link href="user-admin.style.client.css" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Course Manager</title>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="../service/user.service.client.js"></script>
+<script src="user-admin.controller.client.js"></script>
+</head>
+<body>
+	<div class="container">
+	<br>
+		<h1 id="title">User Admin</h1>
+		<br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Password</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Role</th>
+					<th>&nbsp;</th>
+				</tr>
+
+				<tr class="input-form">
+					<td><input type = "text" id="usernameFld" class="form-control"
+						placeholder="Username" /></td>
+					<td><input type="password" id="passwordFld" class="form-control"
+						placeholder="Password" /></td>
+					<td><input type = "text" id="firstNameFld" class="form-control"
+						placeholder="First Name" /></td>
+					<td><input type="text" id="lastNameFld" class="form-control"
+						placeholder="Last Name" /></td>
+					<td><select id="roleFld" class="form-control">
+							<option value="FACULTY">Faculty</option>
+							<option value="STUDENT">Student</option>
+							<option value="ADMIN">Admin</option>
+					</select></td>
+
+					<td><div class="btnblock">
+							<button class="btn" id="search">
+								<i class="fa-1x fa fa-search wbdv-search"></i>
+							</button>
+							<button class="btn" id="create">
+								<i class="fa-1x fa fa-plus"></i>
+							</button>
+							<button class="btn" id="update">
+								<i class="fa-1x fa fa-check"></i>
+							</button>
+							</span>
+						</div></td>
+
+				</tr>
+			</thead>
+			<tbody class="users-list">
+				<tr class="user-row">
+					<td class="username"></td>
+					<td class="password"></td>
+					<td class="first-name"></td>
+					<td class="last-name"></td>
+					<td class="role"></td>
+					<td class="actions">
+						<div class="btnblocklist">
+							<button class="btn" id="remove" >
+								<i class="fa-1x fa fa-times"></i>
+							</button>
+							<button class="btn" id="edit">
+								<i class="fa-1x fa fa-pencil"></i>
+							</button>
+						</div>
+					</td>
+				</tr>
+
+			</tbody>
+			<tfoot></tfoot>
+		</table>
+	</div>
+</body>
+</html>
