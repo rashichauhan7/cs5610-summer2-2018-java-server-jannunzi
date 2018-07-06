@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <link href="login.style.client.css" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Course Manager</title>
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="../service/user.service.client.js"></script>
+    <script src="login.controller.client.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1 id="title">Sign In</h1>
+    <div style=" height: 20px"></div>
+	   <div>
+			<label for="username" class="entryfields">
+				Username: </label>
+            <input id="usernameFld" placeholder="Alice">
+		</div>
+		<div>
+			<label for="password" class="entryfields">
+				Password: </label>
+			<input type="password" id="passwordFld" placeholder="123qwe#$%">
+		</div>
+		<div>
+			<button id="loginBtn" class="btn">Sign In</button>
+				<div>
+						<a href="#">Forgot Password?</a>
+                    <div>
+                    <a href="../register/register.template.client.html" class="register">Sign up</a>
+                    </div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
