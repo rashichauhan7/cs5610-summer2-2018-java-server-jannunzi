@@ -5,12 +5,16 @@
     width: 100px;
     text-align: justify-all;
 }
+.inputs
+{
+    width: 300px;
+}
 .btn
 {
     color: white;
     background-color: dodgerblue;
     cursor: pointer; /* Mouse pointer on hover */
-    width: 300px;
+    width: 400px;
 }
 .btn:hover
 {
