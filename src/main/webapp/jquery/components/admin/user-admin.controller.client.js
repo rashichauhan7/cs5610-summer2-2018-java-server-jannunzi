@@ -1,6 +1,6 @@
 //IIFE
 (function (){
-	    var usernameFld, $passwordFld;
+	    var $usernameFld, $passwordFld;
 	    var $removeBtn, $editBtn, $createBtn, $searchBtn, $updateBtn;
 	    var $firstNameFld, $lastNameFld;
 	    var $roleFld, $tbody;

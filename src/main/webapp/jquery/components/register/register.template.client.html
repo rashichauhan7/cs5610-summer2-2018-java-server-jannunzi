@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+            rel="stylesheet" />
+    <link href="register.style.client.css" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Course Manager</title>
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="../service/user.service.client.js"></script>
+    <script src="register.controller.client.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <h1 id="title">Sign up</h1>
+        <br>
+    </div>
+    <div id = "alert" class = "form-control alert"></div>
+    <div>
+        <label class = "entryfields"> Username: </label>
+        <label><input id="usernameFld" placeholder="Alice"/></label>
+    </div>
+    <div>
+        <label class = "entryfields">Password: </label>
+        <label><input id="passwordFld"/></label>
+    </div>
+    <div>
+        <label class = "entryfields">Verify Password: </label>
+        <label><input id="verifyPasswordFld"/></label>
+    </div>
+    <div>
+        <button id="registerBtn" class = "btn">Sign up</button>
+    </div>
+</div>
+</body>
+</html>
