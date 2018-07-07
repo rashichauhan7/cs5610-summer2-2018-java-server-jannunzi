@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+            rel="stylesheet" />
+    <link href="profile.style.client.css" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Course Manager</title>
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="../../services/user.service.client.js"></script>
+    <script src="profile.controller.client.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="title">Profile</h1>
+    <div style=" height: 20px"></div>
+    <div>
+        <label class = "entryfields"> Username: </label>
+        <label><input id="usernameFld" class="inputs" placeholder="Alice"/></label>
+    </div>
+    <div>
+        <label class = "entryfields">Phone: </label>
+        <label><input type="number" id="phoneFld" class="inputs"/></label>
+    </div>
+    <div>
+        <label class = "entryfields">Email: </label>
+        <label><input type= "email" id="emailFld" class="inputs"/></label>
+    </div>
+     <div>
+        <label class = "entryfields">Role: </label>
+        <label><input id="roleFld" class="inputs"/></label>
+    </div>
+    <div>
+        <label class = "entryfields">Date: </label>
+        <label><input type="date" id="dateFld" class="inputs"/></label>
+    </div>
+    <div>
+        <button id="updateBtn" class = " btn upbtn">Update</button>
+    </div>
+    <br>
+    <div>
+        <button id="logoutBtn" class = " btn logbtn">Logout</button>
+    </div>
+</div>
+</body>
+</html>

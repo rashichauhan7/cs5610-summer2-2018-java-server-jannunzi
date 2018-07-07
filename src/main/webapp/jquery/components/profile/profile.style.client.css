@@ -10,14 +10,17 @@
     width: 300px;
     word-wrap: normal;
 }
-.btn
+.upbtn
 {
     color: white;
-    background-color: dodgerblue;
+    background-color: forestgreen;
     cursor: pointer; /* Mouse pointer on hover */
     width: 400px;
 }
-.btn:hover
+.logbtn
 {
-    background-color: blue;
+    color: white;
+    background-color: red;
+    cursor: pointer; /* Mouse pointer on hover */
+    width: 400px;
 }

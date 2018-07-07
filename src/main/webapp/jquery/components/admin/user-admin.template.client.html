@@ -13,7 +13,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="../service/user.service.client.js"></script>
+<script src="../../services/user.service.client.js"></script>
 <script src="user-admin.controller.client.js"></script>
 </head>
 <body>
@@ -62,12 +62,12 @@
 
 				</tr>
 			</thead>
-			<tbody class="users-list">
-				<tr class="user-row">
+			<tbody id="users-list">
+				<tr class="template">
 					<td class="username"></td>
 					<td class="password"></td>
-					<td class="first-name"></td>
-					<td class="last-name"></td>
+					<td class="firstName"></td>
+					<td class="lastName"></td>
 					<td class="role"></td>
 					<td class="actions">
 						<div class="btnblocklist">
