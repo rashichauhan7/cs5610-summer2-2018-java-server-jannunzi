@@ -6,9 +6,9 @@ function UserService() {
 function UserServiceClient() {
     this.createUser = createUser;
     this.findAllUsers = findAllUsers;
-//    this.findUserById = findUserById;
+    this.findUserById = findUserById;
     this.deleteUser = deleteUser;
-//    this.updateUser = updateUser;
+    this.updateUser = updateUser;
     this.url = 'http://localhost:8080/api/user';
     var self = this;
     
@@ -37,6 +37,29 @@ function UserServiceClient() {
             .then(function (response){
                 return response;
             });
+    }
+
+    function findUserById(userId) {
+        return fetch(self.url + '/' + userId)
+        .then(function (response) {
+            return response.json();
+        });
+
+    }
+
+    function updateUser(userId, user) {
+        var userStr = JSON.stringify(user);
+        return fetch(self.url + '/' + userId, {
+            method: 'put',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body: userStr
+        })
+            .then(function (response){
+                return response;
+            });
+
     }
 }
 

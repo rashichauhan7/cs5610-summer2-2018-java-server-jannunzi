@@ -14,7 +14,7 @@
 		$updateBtn = $('#update');
 		findAllUsers();
 		$createBtn.click(createUser);
-
+        $updateBtn.click(updateUser);
 	}
 	    function createUser() {
 	    	$usernameFld = $('#usernameFld').val();
@@ -34,6 +34,7 @@
                 userService
                 .createUser(user)
                     .then(findAllUsers());
+
 	    }
 	    function findAllUsers() {
 	    	userService
@@ -60,6 +61,7 @@
                         .html(user.role);
 					$('#users-list').append(clone);
 				}
+				clearAllEntryFields();
         }
 
         function deleteUser(event)
@@ -77,10 +79,52 @@
         }
 
         function editUser()
-        {
-
+        {	
+        	$editBtn = $(event.currentTarget);
+            var parent = $editBtn.parent()
+                .parent()
+                .parent();
+            console.log(parent);
+            var userId = parent
+                        .attr('id');
+            userService.findUserById(userId)
+                .then(renderUser);
+        	
         }
 	    function findUserById() { 
-	    	
+	    	return userService.findUserById(userId);
 	    }
+
+	    function clearAllEntryFields() {
+            $('#usernameFld').val("");
+            $('#passwordFld').val("");
+           	$('#firstNameFld').val("");
+            $('#lastNameFld').val("");
+        }
+
+        function renderUser(user)
+        {
+            $('#usernameFld').val(user.username);
+            $('#roleFld').val(user.role);
+            $('#firstNameFld').val(user.firstName);
+            $('#lastNameFld').val(user.lastName);
+            $('.input-form').attr("id", user.id);
+        }
+        
+        function updateUser() {
+            var parent = $updateBtn.parent()
+                .parent()
+                .parent();
+            console.log(parent);
+            var userId = parent
+                .attr('id');
+            var user =
+                {
+                    firstName: $('#firstNameFld').val(),
+                    lastName: $('#lastNameFld').val(),
+                    role: $('#roleFld').val()
+                };
+            userService.updateUser(userId, user)
+                .then(findAllUsers);
+        }
 })();
