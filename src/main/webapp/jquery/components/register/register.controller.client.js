@@ -1,6 +1,7 @@
 (function()
 {
 	var $usernameFld, $passwordFld, $verifyPasswordFld;
+    var userService = new UserServiceClient();
     window.alert = function(title, message) {
         var myElementToShow = $('#alert');
         myElementToShow.html(title + "</br>" + message)
@@ -18,23 +19,27 @@
 		$verifyPasswordFld = $('#verifyPasswordFld').val();
 		if($passwordFld != $verifyPasswordFld)
 		    window.alert("This site says", "Passwords don't match");
-		else
-        {
+		else {
             $('#alert').hide();
             var user = {
                 username: $usernameFld,
                 password: $passwordFld
-            }
-            var userStr = JSON.stringify(user);
-            var url = '/api/register';
-            fetch(url,  {
-                method : 'post',
-                headers : {
-                    'Content-Type' : 'application/json'
-                },
-                body: userStr
-            });
+            };
+            userService.findUserByUsername($usernameFld)
+                .then(function (result) {
+                    if(!$.isArray(result) ||  !result.length )
+                        userService.registerUser(user)
+                            .then(renderUser);
+                    else
+                    {
+                        window.alert("This site says", "User with this name already exits. Please try another.");
+                        $('#alert').show();
+                    }
 
+                });
+        }
+        function renderUser() {
+		    window.location.href = "/jquery/components/profile/profile.template.client.html";
         }
 	}
 	})();

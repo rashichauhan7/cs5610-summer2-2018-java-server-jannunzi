@@ -22,7 +22,7 @@
     <div style=" height: 20px"></div>
     <div>
         <label class = "entryfields"> Username: </label>
-        <label><input id="usernameFld" class="inputs" placeholder="Alice"/></label>
+        <label><input id="usernameFld" class="inputs" readonly/></label>
     </div>
     <div>
         <label class = "entryfields">Phone: </label>
@@ -34,18 +34,22 @@
     </div>
      <div>
         <label class = "entryfields">Role: </label>
-        <label><input id="roleFld" class="inputs"/></label>
+        <label><select id="roleFld" class="form-control">
+            <option value="FACULTY">Faculty</option>
+            <option value="STUDENT">Student</option>
+            <option value="ADMIN">Admin</option>
+        </select></label>
     </div>
     <div>
         <label class = "entryfields">Date: </label>
         <label><input type="date" id="dateFld" class="inputs"/></label>
     </div>
     <div>
-        <button id="updateBtn" class = " btn upbtn">Update</button>
+        <button id="updateBtn" type="button" class="btn upbtn">Update</button>
     </div>
     <br>
     <div>
-        <button id="logoutBtn" class = " btn logbtn">Logout</button>
+        <button id="logoutBtn" type="button" class="btn logbtn">Logout</button>
     </div>
 </div>
 </body>

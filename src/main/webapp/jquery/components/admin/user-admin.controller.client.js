@@ -33,7 +33,7 @@
 
                 userService
                 .createUser(user)
-                    .then(findAllUsers());
+                    .then(findAllUsers);
 
 	    }
 	    function findAllUsers() {
