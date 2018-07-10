@@ -27,7 +27,7 @@
             };
             userService.findUserByUsername($usernameFld)
                 .then(function (result) {
-                    if(!$.isArray(result) ||  !result.length )
+                    if(result.length == 0)
                         userService.registerUser(user)
                             .then(renderUser);
                     else

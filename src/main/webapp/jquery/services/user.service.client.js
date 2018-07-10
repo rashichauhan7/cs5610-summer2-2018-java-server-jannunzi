@@ -8,9 +8,11 @@ function UserServiceClient() {
     this.getProfile = getProfile;
     this.registerUser = registerUser;
     this.logout = logout;
+    this.login = login;
     this.url = 'http://localhost:8080/api/user';
     this.register = 'http://localhost:8080/api/register';
     this.profile = 'http://localhost:8080/api/profile';
+    this.loginurl = 'http://localhost:8080/api/login';
     var self = this;
     
     
@@ -94,6 +96,27 @@ function UserServiceClient() {
             .then(function (response) {
                     return response.json();
                 });
+    }
+
+    function login(username, password) {
+
+        return fetch(self.loginurl,
+            {
+                method : 'post',
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                body:
+                    JSON.stringify({
+                        username: username,
+                        password: password
+                    }),
+                credentials: 'include',
+
+            }).then(function(response)
+        {
+            return response.json();
+        });
     }
 
     function logout()

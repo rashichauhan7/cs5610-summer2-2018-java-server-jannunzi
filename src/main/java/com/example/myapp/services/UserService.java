@@ -1,5 +1,6 @@
 package com.example.myapp.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,11 +71,17 @@ public class UserService {
 		if(data.isPresent())
 		{
 			User user = data.get();
+			if(newuser.getFirstName()!= null)
 			user.setFirstName(newuser.getFirstName());
+			if(newuser.getLastName()!= null)
 			user.setLastName(newuser.getLastName());
+			if(newuser.getRole()!= null)
 			user.setRole(newuser.getRole());
+			if(newuser.getDate()!= null)
 			user.setDate(newuser.getDate());
+			if(newuser.getEmail()!= null)
 			user.setEmail(newuser.getEmail());
+			if(newuser.getPhone()!= null)
 			user.setPhone(newuser.getPhone());
 			return repository.save(user);
 			
@@ -91,6 +98,23 @@ public class UserService {
 				return e;   
 		System.out.println(currentUser.toString());
 		return (User) currentUser;
+	}
+	
+	@PostMapping("/api/login")
+	public List<User> login(@RequestBody User user, HttpSession session)
+	{
+	
+		List<User> e = new ArrayList<User>();
+		System.out.println(e);
+		List<User> users = (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
+		if(users.size() == 0)
+			return e;
+		else
+		{
+			session.setAttribute("currentUser", users.get(0));
+			return users;
+		}
+			
 	}
 	
 	@PostMapping("/api/logout")

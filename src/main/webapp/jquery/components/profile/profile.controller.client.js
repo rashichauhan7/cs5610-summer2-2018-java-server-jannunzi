@@ -4,7 +4,6 @@ var userService = new UserServiceClient();
     var $phone, $date, $email, $role;
     var $updateBtn, $logoutBtn;
     var $usernameFld;
-    var $firstNameFld, $lastNameFld;
     $(main);
     function main()
     {
@@ -13,7 +12,11 @@ var userService = new UserServiceClient();
         $updateBtn.click(updateProfile);
         $logoutBtn.click(logout);
         userService.getProfile()
-            .then(renderUser);
+            .then(function (user) {
+                userService.findUserById(user.id)
+                    .then(renderUser);
+            });
+
     }
 
     function renderUser(user)
@@ -21,9 +24,9 @@ var userService = new UserServiceClient();
         if(user.id != 0){
             $('#usernameFld').val(user.username);
             $('#phoneFld').val(user.phone);
-            $('#dateFld').val(user.date);
+            $('#dateFld').html(user.date);
             $('#roleFld').val(user.role);
-            $('#email').val(user.email);
+            $('#emailFld').val(user.email);
         }
        else
            alert("user not currently logged in.")
@@ -31,8 +34,6 @@ var userService = new UserServiceClient();
     function updateProfile()
     {
         $usernameFld = $('#usernameFld').val();
-        $firstNameFld = $('#firstNameFld').val();
-        $lastNameFld = $('#lastNameFld').val();
         $role = $('#roleFld').val();
         $phone = $('#phoneFld').val();
         $date = $('#dateFld').val();
@@ -40,8 +41,6 @@ var userService = new UserServiceClient();
         var newuser =
             {
                 username: $usernameFld,
-                firstName: $firstNameFld,
-                lastName: $lastNameFld,
                 role: $role,
                 phone: $phone,
                 email: $email,
