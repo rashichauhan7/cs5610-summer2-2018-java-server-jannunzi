@@ -16,4 +16,3 @@ public interface UserRepository extends CrudRepository<User, Integer>{
 			@Param("password") String password);
 	}
 
-
