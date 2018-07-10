@@ -16,25 +16,25 @@
     <script src="login.controller.client.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 	<h1 id="title">Sign In</h1>
     <div style=" height: 20px"></div>
 	   <div>
-			<label for="username" class="entryfields">
+			<label id="username" class="entryfields">
 				Username: </label>
-            <input id="usernameFld" class="inputs" placeholder="Alice">
+            <input id="usernameFld" class="inputs form-control" placeholder="Alice">
 		</div>
 		<div>
-			<label for="password" class="entryfields">
+			<label id="password" class="entryfields">
 				Password: </label>
-			<input type="password" id="passwordFld" class = "inputs" placeholder="123qwe#$%">
+			<input type="password" id="passwordFld" class = "inputs form-control" placeholder="123qwe#$%">
 		</div>
 		<div>
-			<button id="loginBtn" class="btn">Sign In</button>
+			<button id="loginBtn" class="btn ">Sign In</button>
 				<div>
 						<a href="#">Forgot Password?</a>
                     <div>
-                    <a href="../register/register.template.client.html" class="register">Sign up</a>
+                    <a href="../register/register.template.client.html" class="register ">Sign up</a>
                     </div>
 				</div>
 			</div>

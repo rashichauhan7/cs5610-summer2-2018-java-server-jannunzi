@@ -15,26 +15,31 @@
 		findAllUsers();
 		$createBtn.click(createUser);
         $updateBtn.click(updateUser);
+        $searchBtn.click(searchUser);
+        $updateBtn.css("display","none");
 	}
 	    function createUser() {
 	    	$usernameFld = $('#usernameFld').val();
-			$passwordFld = $('#passwordFld').val();
-			$firstNameFld = $('#firstNameFld').val();
-			$lastNameFld = $('#lastNameFld').val();
-			$roleFld = $('#roleFld').val();
-			
-	    	var user = {
-	    			username: $usernameFld,
-					password: $passwordFld,
-					firstName: $firstNameFld,
-					lastName: $lastNameFld,
-					role: $roleFld
-	    	};
+	    	if($usernameFld === "")
+	    		window.alert("The username field is empty");
+	    	else {
+                $passwordFld = $('#passwordFld').val();
+                $firstNameFld = $('#firstNameFld').val();
+                $lastNameFld = $('#lastNameFld').val();
+                $roleFld = $('#roleFld').val();
+
+                var user = {
+                    username: $usernameFld,
+                    password: $passwordFld,
+                    firstName: $firstNameFld,
+                    lastName: $lastNameFld,
+                    role: $roleFld
+                };
 
                 userService
-                .createUser(user)
+                    .createUser(user)
                     .then(findAllUsers);
-
+            }
 	    }
 	    function findAllUsers() {
 	    	userService
@@ -79,7 +84,9 @@
         }
 
         function editUser()
-        {	
+        {
+            $createBtn.css("display","none");
+            $updateBtn.css("display","");
         	$editBtn = $(event.currentTarget);
             var parent = $editBtn.parent()
                 .parent()
@@ -112,6 +119,8 @@
         }
         
         function updateUser() {
+            $createBtn.css("display","");
+            $updateBtn.css("display","none");
             var parent = $updateBtn.parent()
                 .parent()
                 .parent();
@@ -127,4 +136,12 @@
             userService.updateUser(userId, user)
                 .then(findAllUsers);
         }
+
+        function searchUser()
+		{
+			$usernameFld = $('#usernameFld').val();
+			userService.findUserByUsername($usernameFld)
+				.then(renderUsers);
+		}
+
 })();

@@ -68,7 +68,10 @@ function UserServiceClient() {
     {
         return fetch(self.url + '?username=' + username)
             .then(function (response) {
+                if(response!= null)
                 return response.json();
+                else
+                    return null;
             });
     }
 

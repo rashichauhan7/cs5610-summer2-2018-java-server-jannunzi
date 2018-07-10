@@ -14,14 +14,23 @@
         userService.login($usernameFld, $passwordFld)
             .then(function (response) {
                 if (response.length != 0)
-                    renderUser();
+                    renderUser($usernameFld, $passwordFld);
                 else {
-                    window.alert("This site says", "User with this name already exits. Please try another.");
-                    $('#alert').show();
+                    userService.findUserByUsername($usernameFld)
+                        .then(function (response) {
+                            if(response.length == 0)
+                            window.alert("Username does not exist");
+                            else
+                                window.alert("Password incorrect");
+                            $('#alert').show();
+                        });
                 }
             });
     }
-    function renderUser() {
-        window.location.href = "/jquery/components/profile/profile.template.client.html";
+    function renderUser($usernameFld, $passwordFld) {
+        if($usernameFld === "admin" && $passwordFld === "admin")
+            window.location.href = "/jquery/components/admin/user-admin.template.client.html";
+        else
+            window.location.href = "/jquery/components/profile/profile.template.client.html";
     }
 })();
