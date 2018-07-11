@@ -24,12 +24,17 @@ var userService = new UserServiceClient();
         if(user.id != 0){
             $('#usernameFld').val(user.username);
             $('#phoneFld').val(user.phone);
-            $('#dateFld').html(user.date);
+            $('#dateFld').val(format(user.date));
             $('#roleFld').val(user.role);
             $('#emailFld').val(user.email);
         }
        else
            alert("user not currently logged in.")
+    }
+    function format(inputDate) {
+            var d = inputDate;
+            d = d.substr(0, 10);
+            return d;
     }
     function updateProfile()
     {

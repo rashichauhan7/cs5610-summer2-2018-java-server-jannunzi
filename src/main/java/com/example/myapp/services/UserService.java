@@ -34,7 +34,7 @@ public class UserService {
 			if(role != null)
 				return repository.findUserByRole(role);
 			else		
-			return (List<User>) repository.findAll();
+				return (List<User>) repository.findAll();
 	}
 
 	@PostMapping("/api/user")
@@ -45,7 +45,7 @@ public class UserService {
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user, HttpSession session)
 	{
-		
+
 		User newuser =  repository.save(user);
 		session.setAttribute("currentUser", newuser);
 		return newuser;
@@ -75,19 +75,21 @@ public class UserService {
 		{
 			User user = data.get();
 			if(newuser.getFirstName()!= null)
-			user.setFirstName(newuser.getFirstName());
+				user.setFirstName(newuser.getFirstName());
 			if(newuser.getLastName()!= null)
-			user.setLastName(newuser.getLastName());
+				user.setLastName(newuser.getLastName());
+			if(newuser.getPassword()!= null)
+				user.setPassword(newuser.getPassword());
 			if(newuser.getRole()!= null)
-			user.setRole(newuser.getRole());
+				user.setRole(newuser.getRole());
 			if(newuser.getDate()!= null)
-			user.setDate(newuser.getDate());
+				user.setDate(newuser.getDate());
 			if(newuser.getEmail()!= null)
-			user.setEmail(newuser.getEmail());
+				user.setEmail(newuser.getEmail());
 			if(newuser.getPhone()!= null)
-			user.setPhone(newuser.getPhone());
+				user.setPhone(newuser.getPhone());
 			return repository.save(user);
-			
+
 		}
 		return null;
 	}
@@ -95,18 +97,18 @@ public class UserService {
 
 	@GetMapping("/api/profile")
 	public User profile(HttpSession session) {
-			Object currentUser =  session.getAttribute("currentUser"); 
-			User e = new User();
-			if(currentUser == null)
-				return e;   
+		Object currentUser =  session.getAttribute("currentUser"); 
+		User e = new User();
+		if(currentUser == null)
+			return e;   
 		System.out.println(currentUser.toString());
 		return (User) currentUser;
 	}
-	
+
 	@PostMapping("/api/login")
 	public List<User> login(@RequestBody User user, HttpSession session)
 	{
-	
+
 		List<User> e = new ArrayList<User>();
 		System.out.println(e);
 		List<User> users = (List<User>) repository.findUserByCredentials(user.getUsername(), user.getPassword());
@@ -117,21 +119,21 @@ public class UserService {
 			session.setAttribute("currentUser", users.get(0));
 			return users;
 		}
-			
+
 	}
-	
+
 	@PostMapping("/api/logout")
 	public void logout(HttpSession session) {
-	    session.invalidate();
+		session.invalidate();
 	}
-	
+
 	@PostMapping("/api/forgotpassword")
 	public void forgotPassword(@RequestBody User user)
 	{
-			String email = user.getEmail();
-			String pass = user.getPassword();
-			String subject = "Password";
-			String text = pass;
-			new EmailServiceImpl().sendSimpleMessage(email, subject , text);
+		String email = user.getEmail();
+		String pass = user.getPassword();
+		String subject = "Password";
+		String text = pass;
+		new EmailServiceImpl().sendSimpleMessage(email, subject , text);
 	}
 }

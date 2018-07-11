@@ -137,6 +137,7 @@
                 {
                     firstName: $('#firstNameFld').val(),
                     lastName: $('#lastNameFld').val(),
+                    password: $('#passwordFld').val(),
                     role: $('#roleFld').val()
                 };
             userService.updateUser(userId, user)
