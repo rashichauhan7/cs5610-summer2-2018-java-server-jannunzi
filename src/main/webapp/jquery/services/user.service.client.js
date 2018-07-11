@@ -9,6 +9,7 @@ function UserServiceClient() {
     this.registerUser = registerUser;
     this.logout = logout;
     this.login = login;
+    this.findUserByRole = findUserByRole;
     this.url = 'http://localhost:8080/api/user';
     this.register = 'http://localhost:8080/api/register';
     this.profile = 'http://localhost:8080/api/profile';
@@ -127,6 +128,16 @@ function UserServiceClient() {
         fetch('http://localhost:8080/api/logout', {
             method: 'post'
         });
+    }
+
+    function findUserByRole(role) {
+        return fetch(self.url + '?role=' + role)
+            .then(function (response) {
+                if(response!= null)
+                    return response.json();
+                else
+                    return null;
+            });
     }
 }
 

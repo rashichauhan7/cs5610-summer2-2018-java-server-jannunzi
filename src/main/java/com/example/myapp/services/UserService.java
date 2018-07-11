@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.myapp.model.User;
 import com.example.myapp.repository.UserRepository;
-
+import com.example.myapp.EmailServiceImpl;
 @RestController
 
 public class UserService {
@@ -26,11 +26,14 @@ public class UserService {
 	UserRepository repository;
 	@GetMapping("/api/user")
 	public Iterable<User> findAllUsers(
-			@RequestParam(name="username", required=false) String username)
+			@RequestParam(name="username", required=false) String username, @RequestParam(name="role", required=false) String role)
 	{
 		if(username != null)
 			return repository.findUserByUsername(username);
 		else
+			if(role != null)
+				return repository.findUserByRole(role);
+			else		
 			return (List<User>) repository.findAll();
 	}
 
@@ -121,6 +124,14 @@ public class UserService {
 	public void logout(HttpSession session) {
 	    session.invalidate();
 	}
-
-
+	
+	@PostMapping("/api/forgotpassword")
+	public void forgotPassword(@RequestBody User user)
+	{
+			String email = user.getEmail();
+			String pass = user.getPassword();
+			String subject = "Password";
+			String text = pass;
+			new EmailServiceImpl().sendSimpleMessage(email, subject , text);
+	}
 }

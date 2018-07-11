@@ -35,10 +35,16 @@
                     lastName: $lastNameFld,
                     role: $roleFld
                 };
+                userService.findUserByUsername($usernameFld)
+                    .then(function (result) {
+                        if (result.length == 0)
+                            userService
+                                .createUser(user)
+                                .then(findAllUsers);
+                        else
+                            window.alert("User with this username already exits");
+                    });
 
-                userService
-                    .createUser(user)
-                    .then(findAllUsers);
             }
 	    }
 	    function findAllUsers() {
@@ -139,8 +145,8 @@
 
         function searchUser()
 		{
-			$usernameFld = $('#usernameFld').val();
-			userService.findUserByUsername($usernameFld)
+			$roleFld = $('#roleFld').val();
+			userService.findUserByRole($roleFld)
 				.then(renderUsers);
 		}
 
