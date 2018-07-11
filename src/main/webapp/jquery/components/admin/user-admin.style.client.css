@@ -15,4 +15,11 @@
 .btnblocklist {
 	width: 200px;
 }
+.alert
+{
+    align-content: center;
+    border: InactiveBorder;
+    text-effect: outline;
+    width: 200px;
+}
 

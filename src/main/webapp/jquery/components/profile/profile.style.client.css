@@ -24,3 +24,10 @@
     cursor: pointer; /* Mouse pointer on hover */
     width: 400px;
 }
+.alert
+{
+    align-content: center;
+    border: InactiveBorder;
+    text-effect: outline;
+    width: 200px;
+}

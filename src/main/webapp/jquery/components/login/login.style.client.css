@@ -7,7 +7,7 @@
 }
 .inputs
 {
-    width: 300px;
+    width: 400px;
     margin-bottom: 10px;
     word-wrap: normal;
 }
@@ -21,4 +21,11 @@
 .btn:hover
 {
     background-color: blue;
+}
+.alert
+{
+    align-content: center;
+    border: InactiveBorder;
+    text-effect: outline;
+    width: 200px;
 }

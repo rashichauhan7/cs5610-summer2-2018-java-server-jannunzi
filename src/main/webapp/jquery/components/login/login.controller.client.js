@@ -2,6 +2,11 @@
     var $usernameFld, $passwordFld;
     var $loginBtn;
     var userService = new UserServiceClient();
+    window.alert = function(title, message) {
+        var myElementToShow = $('#alert');
+        myElementToShow.html(title + "</br>" + message)
+            .css("border", "solid");
+    }
     $(main);
 
     function main() {
@@ -19,9 +24,9 @@
                     userService.findUserByUsername($usernameFld)
                         .then(function (response) {
                             if(response.length == 0)
-                            window.alert("Username does not exist");
+                            window.alert("This site says","Username does not exist");
                             else
-                                window.alert("Password incorrect");
+                                window.alert("This site says","Password incorrect");
                             $('#alert').show();
                         });
                 }

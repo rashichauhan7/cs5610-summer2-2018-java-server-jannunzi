@@ -2,6 +2,11 @@
 
     var $email, $username;
     var userService = new UserServiceClient();
+    window.alert = function(title, message) {
+        var myElementToShow = $('#alert');
+        myElementToShow.html(title + "</br>" + message)
+            .css("border", "solid");
+    }
     $(main);
     function main() {
         var $reset = $('.send');
@@ -15,24 +20,38 @@
             .then(sendEmail);
     }
     function sendEmail(user) {
-        var password = user[0].password;
-        $email =  $('#email').val();
-
-        fetch('http://localhost:8080/api/forgotpassword',
-            {
-                method : 'post',
-                headers : {
-                    'Content-Type':'application/json'
-                },
-                body : JSON.stringify({ email : $email, password : password})
-            }).then(success, failure);
+        if(user.length == 0)
+            window.alert("This site says","Please enter a valid username");
+        else {
+            var password = user[0].password;
+            $email = $('#email').val();
+            if (validateEmail($email)) {
+                fetch('http://localhost:8080/api/forgotpassword',
+                    {
+                        method: 'post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({email: $email, password: password})
+                    }).then(success, failure);
+            }
+            else
+                window.alert("This site says","Please enter a valid email address");
+        }
     }
+
+    function validateEmail($email) {
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        return emailReg.test( $email );
+    }
+
+
     function success()
     {
-        window.alert("Password sent to requested email address");
+        window.alert("This site says","Password sent to requested email address");
     }
     function failure()
     {
-        window.alert("Unable to send email");
+        window.alert("This site says","Unable to send email");
     }
 })();

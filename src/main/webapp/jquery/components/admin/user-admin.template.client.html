@@ -15,12 +15,13 @@
 
 <script src="../../services/user.service.client.js"></script>
 <script src="user-admin.controller.client.js"></script>
+	<script src="../user/user.model.client.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
 	<br>
 		<h1 id="title">User Admin</h1>
-		<br>
+		<div id = "alert" class = "form-control alert"></div>
 		<div class=table-responsive">
 		<table class="table table-striped">
 			<thead>
@@ -30,6 +31,9 @@
 					<th>Password</th>
 					<th>First Name</th>
 					<th>Last Name</th>
+					<th>Email</th>
+					<th>Contact</th>
+					<th>Date</th>
 					<th>Role</th>
 					<th>&nbsp;</th>
 				</tr>
@@ -43,6 +47,12 @@
 						placeholder="First Name" /></td>
 					<td><input type="text" id="lastNameFld" class="form-control"
 						placeholder="Last Name" /></td>
+					<td><input type="email" id="emailFld" class="form-control"
+							   placeholder="Email" /></td>
+					<td><input type="number" id="contactFld" class="form-control"
+							   placeholder="Contact" /></td>
+					<td><input type="date" id="dateFld" class="form-control"
+							   placeholder="Date of Birth" /></td>
 					<td><select id="roleFld" class="form-control">
 							<option value="FACULTY">Faculty</option>
 							<option value="STUDENT">Student</option>
@@ -70,6 +80,9 @@
 					<td class="password">****</td>
 					<td class="firstName"></td>
 					<td class="lastName"></td>
+					<td class="email"></td>
+					<td class="contact"></td>
+					<td class="date"></td>
 					<td class="role"></td>
 					<td class="actions">
 						<div class="btnblocklist">
