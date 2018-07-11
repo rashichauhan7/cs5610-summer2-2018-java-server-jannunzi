@@ -1,4 +1,4 @@
-"# cs5610-summer2-2018-java-server-rashic" 
+"# cs5610-summer2-2018-java-server-jannunzi" 
 
 Important notes pertaining to project.
 1. Default home page is "login.template.client.html" page
