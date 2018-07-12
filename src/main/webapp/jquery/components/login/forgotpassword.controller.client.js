@@ -26,7 +26,7 @@
             var password = user[0].password;
             $email = $('#email').val();
             if (validateEmail($email)) {
-                fetch('http://localhost:8080/api/forgotpassword',
+                fetch('/api/forgotpassword',
                     {
                         method: 'post',
                         headers: {
