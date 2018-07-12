@@ -127,7 +127,7 @@
             $('#lastNameFld').val("");
             $('#emailFld').val("");
             $('#roleFld').val("");
-            $('#phoneFld').val("");
+            $('#contactFld').val("");
             $('#dateFld').val("");
         }
 
@@ -138,7 +138,7 @@
             $('#firstNameFld').val(user.firstName);
             $('#lastNameFld').val(user.lastName);
             $('#emailFld').val(user.email);
-            $('#phoneFld').val(user.phone);
+            $('#contactFld').val(user.phone);
             $('#dateFld').val(format(user.date));
             $('.input-form').attr("id", user.id);
         }
@@ -164,7 +164,7 @@
                     password: $('#passwordFld').val(),
                     role: $('#roleFld').val(),
                     email: $('#emailFld').val(),
-                    phone:  $('#phoneFld').val(),
+                    phone:  $('#contactFld').val(),
                     date:  $('#dateFld').val()
                 };
             userService.updateUser(userId, user)
