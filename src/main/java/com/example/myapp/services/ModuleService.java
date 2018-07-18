@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.myapp.model.Course;
 import com.example.myapp.model.Module;
+import com.example.myapp.model.User;
 import com.example.myapp.repository.CourseRepository;
 import com.example.myapp.repository.ModuleRepository;
 
@@ -51,6 +53,30 @@ public class ModuleService {
 	public void deleteModule(@PathVariable("moduleId") int moduleId)
 	{
 		moduleRepository.deleteById(moduleId);
+	}
+    
+    
+    @GetMapping("/api/module/{moduleId}")
+	public Module findModuleById(@PathVariable("moduleId") int moduleId)
+	{
+		Optional<Module> data = moduleRepository.findById(moduleId);
+		if(data.isPresent())
+			return data.get();
+		return null;
+	}
+
+	@PutMapping("/api/module/{moduleId}")
+	public Module updateModule(@PathVariable("moduleId") int moduleId, @RequestBody Module newModule)
+	{
+		Optional<Module> data = moduleRepository.findById(moduleId);
+		if(data.isPresent())
+		{
+			Module module = data.get();
+			module.setTitle(newModule.getTitle());
+			return moduleRepository.save(module);
+
+		}
+		return null;
 	}
 
 }
