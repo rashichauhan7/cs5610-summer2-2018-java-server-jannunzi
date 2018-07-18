@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.myapp.model.Course;
+import com.example.myapp.model.Lesson;
 import com.example.myapp.model.Module;
 import com.example.myapp.model.User;
 import com.example.myapp.repository.CourseRepository;
@@ -28,6 +29,11 @@ public class ModuleService {
     @Autowired
     ModuleRepository moduleRepository;
     
+    
+    @GetMapping("/api/module")
+	public Iterable<Module> findAllModules() {
+		return moduleRepository.findAll(); 
+	}
     @PostMapping("/api/course/{courseId}/module")
     public Module createModule(@PathVariable("courseId") int courseId, @RequestBody Module newModule) {
         Optional<Course> data = courseRepository.findById(courseId);
