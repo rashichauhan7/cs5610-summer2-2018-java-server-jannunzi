@@ -23,8 +23,7 @@ import com.example.myapp.repository.LessonRepository;
 import com.example.myapp.repository.ModuleRepository;
 import com.example.myapp.repository.TopicRepository;
 @RestController
-@CrossOrigin
-(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class TopicServices {
 
 	@Autowired
