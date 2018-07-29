@@ -5,9 +5,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -72,4 +74,39 @@ public class WidgetServices {
 	{
 		return (List<Widget>) widgetRepository.findAll();
 	}
+	
+	
+	@GetMapping("/api/widget/{widgetId}")
+	public Widget getWidgetById(@PathVariable ("widgetId") int widgetId)
+	{
+		Optional<Widget> w = widgetRepository.findById(widgetId);
+		return w.get();
+	}
+	
+	@PutMapping("/api/widget/{widgetId}")
+	public Widget updateWidget(@PathVariable ("widgetId") int widgetId, @RequestBody Widget newwidget)
+	{
+		Optional<Widget> w = widgetRepository.findById(widgetId);
+		if(w.isPresent())
+		{
+			Widget widget = w.get();
+			widget.setEdit(newwidget.isEdit());
+			widget.setListItems(newwidget.getListItems());
+			widget.setOrdered(newwidget.isOrdered());
+			widget.setSize(newwidget.getSize());
+			widget.setSrc(newwidget.getSrc());
+			widget.setText(newwidget.getText());
+			widget.setTitle(newwidget.getTitle());
+			widget.setType(newwidget.getType());
+			return widgetRepository.save(widget);
+		}
+		return null;
+	}
+	
+	@DeleteMapping("/api/widget/{widgetId}")
+	public void deleteWidget(
+			@PathVariable("widgetId") int widgetId) {
+		widgetRepository.deleteById(widgetId);
+	}
+	
 }
