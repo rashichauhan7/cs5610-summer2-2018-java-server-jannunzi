@@ -96,7 +96,7 @@ public class WidgetServices {
 			widget.setSize(newwidget.getSize());
 			widget.setSrc(newwidget.getSrc());
 			widget.setText(newwidget.getText());
-			widget.setTitle(newwidget.getTitle());
+			widget.setname(newwidget.getname());
 			widget.setType(newwidget.getType());
 			return widgetRepository.save(widget);
 		}

@@ -13,7 +13,7 @@ public class Widget {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String title;
+	private String name;
 	private String type;
 	private boolean edit;
 	
@@ -84,12 +84,12 @@ public class Widget {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getname() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setname(String name) {
+		this.name = name;
 	}
 
 	public String getText() {
